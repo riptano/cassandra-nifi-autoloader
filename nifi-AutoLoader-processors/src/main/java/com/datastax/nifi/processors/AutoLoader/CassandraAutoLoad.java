@@ -105,22 +105,22 @@ public class CassandraAutoLoad extends AbstractProcessor {
             }
         });
 
-        // Write the results to an attribute
-        String results = value.get();
-        if(results != null && !results.isEmpty()){
-            flowfile = session.putAttribute(flowfile, "match", results);
-        }
-
-        // To write the results back out ot flow file
-        flowfile = session.write(flowfile, new OutputStreamCallback() {
-
-            @Override
-            public void process(OutputStream out) throws IOException {
-                out.write(value.get().getBytes());
-            }
-        });
-
-        session.transfer(flowfile, SUCCESS);
+//        // Write the results to an attribute
+//        String results = value.get();
+//        if(results != null && !results.isEmpty()){
+//            flowfile = session.putAttribute(flowfile, "match", results);
+//        }
+//
+////        // To write the results back out ot flow file
+////        flowfile = session.write(flowfile, new OutputStreamCallback() {
+////
+////            @Override
+////            public void process(OutputStream out) throws IOException {
+////                out.write(value.get().getBytes());
+////            }
+//        });
+//
+////        session.transfer(flowfile, SUCCESS);
     }
 
     @Override

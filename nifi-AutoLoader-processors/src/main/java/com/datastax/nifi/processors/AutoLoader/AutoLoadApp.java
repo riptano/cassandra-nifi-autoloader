@@ -8,13 +8,9 @@ import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.util.Arrays;
-
-
 
 public class AutoLoadApp {
     static final Logger logger = LoggerFactory.getLogger(AutoLoadApp.class);
@@ -68,8 +64,8 @@ public class AutoLoadApp {
             commandLine = cmdLineParser.parse(options, commandLineArguments);
         } catch (ParseException parseException) {
             logger.error("ERROR: Unable to parse command-line arguments "
-                            + Arrays.toString(commandLineArguments) + " due to: "
-                            + parseException);
+                    + Arrays.toString(commandLineArguments) + " due to: "
+                    + parseException);
         }
         return commandLine;
     }
@@ -85,7 +81,7 @@ public class AutoLoadApp {
         try {
             InputStream is = new FileInputStream(filename);
             CsvAutoLoader csvAutoLoader = new CsvAutoLoader(is, addresses);
-            csvAutoLoader.createTableFromHeader(keyspace,table);
+            csvAutoLoader.createTableFromHeader(keyspace, table);
             csvAutoLoader.loadTable(keyspace, table);
 
         } catch (Exception e) {
